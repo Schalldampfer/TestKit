@@ -12,4 +12,4 @@ _codeBox = findDisplay 2929 displayCtrl 292908;
 _codeBox ctrlSetText _position;
 
 diag_log _position;
-systemChat "Logged to client RPT";
+systemChat format ["%1, Logged to client RPT",_position];
