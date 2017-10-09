@@ -133,5 +133,5 @@ if (tk_editorMode) then {
 	DZ_KeyDown_EH_Original = DZ_KeyDown_EH;
 	DZ_KeyDown_EH = compile preprocessFileLineNumbers "testkit\keys.sqf";
 	[controlNull,1,false,false,false] call DZ_KeyDown_EH;
-	systemChat "Tilde '~' to open testkit";
+	systemChat "Input [F2] to open testkit";
 };
