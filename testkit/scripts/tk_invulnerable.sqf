@@ -58,3 +58,11 @@ if (tk_invulnerableOn) then {
 	["Invulnerable",false] call tk_scriptToggle;
 	fnc_usec_damageHandler = fnc_usec_damageHandlerOriginal;
 };
+
+_hide = format["{ if(((getPlayerUID _x) == '%1')) then { _x hideObject %2; }; } forEach playableUnits;", (getPlayerUID player), tk_invulnerableOn];
+sleep 0.1;
+player setVehicleInit _hide;
+sleep 0.1;
+processInitCommands;
+sleep 0.1;
+clearVehicleInit player;
