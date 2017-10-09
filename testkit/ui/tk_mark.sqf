@@ -71,7 +71,7 @@ if (call compile _status) then {
 						[{"Blue"},{if ((vehicle _this == _this or !tk_markVehiclesOn) && isPlayer _this) then {name _this} else {""}},allUnits]
 					};
 					case "plots": {
-						[{"White"},{"Plot"},entities "Plastic_Pole_EP1_DZ"]
+						[{"Orange"},{"Plot"},entities "Plastic_Pole_EP1_DZ"]
 					};
 					case "storage": {
 						[{"Green"},{typeOf _this},nearestObjects [CENTER,["DZ_storage_base","VaultStorage","VaultStorageLocked","LockboxStorageLocked","LockboxStorage"],RADIUS]]
