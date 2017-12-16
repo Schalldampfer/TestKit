@@ -1,4 +1,3 @@
-#include "ui\text_scripts.sqf"
 _handled = _this call DZ_KeyDown_EH_Original;
 
 #include "\ca\editor\Data\Scripts\dikCodes.h"
@@ -20,7 +19,14 @@ if (isNil "_code") then {
 		};
 		_handled = true
 	}];
-	keyboard_keys set [DIK_DELETE,{call tk_delete}];
+	
+	if (tk_minimalMode) then {
+		tk_open = {};
+	} else {
+		keyboard_keys set [DIK_DELETE,{call tk_delete}];
+		keyboard_keys set [DIK_U,{call tk_unlock; _handled = true}];
+	};
+	
 	keyboard_keys set [DIK_5,{call tk_fastForward; _handled = true}];
 	keyboard_keys set [DIK_6,{call tk_fastUp; _handled = true}];
 	keyboard_keys set [DIK_F8,{call compile preprocessFileLineNumbers "testkit\test.sqf"; _handled = true}];

@@ -1,4 +1,3 @@
-#include "text_scripts.sqf"
 #define GO_BACK "if (lbCurSel 292901 == 0) exitWith {'Scripts' call tk_fillBigList;};"
 
 private "_type";
@@ -21,7 +20,7 @@ _type = _this select 1;
 			
 			if (tk_isEpoch) then {
 				_result = ['true', 'ItemKeyBlue1421'];
-				PVDZE_veh_Publish2 = if (_class isKindOf 'Bicycle') then {[[0,_pos],_class,true,'0',player]} else {[[0,_pos],_class,false,_result select 1,player]};
+				PVDZE_veh_Publish2 = if (_class isKindOf 'Bicycle') then {[[0,_pos],_class,true,'0',player,dayz_authKey]} else {[[0,_pos],_class,false,_result select 1,player,dayz_authKey]};
 				publicVariableServer 'PVDZE_veh_Publish2';
 			} else {
 				PVDZ_getTickTime = [getPlayerUID player,1,[_class,_pos],toArray (PVDZ_pass select 0)];
@@ -96,11 +95,7 @@ _type = _this select 1;
 		GO_BACK + "
 			private '_class';
 			_class = lbData [292901,lbCurSel 292901];
-			if (typeOf player != _class) then {
-				gear_done = false;
-				[dayz_playerUID,dayz_characterID,_class] spawn player_humanityMorph;
-				gear_done = true;
-			};
+			[dayz_playerUID,dayz_characterID,_class] spawn player_humanityMorph;
 			systemChat format['Now wearing: %1',_class];
 			'_selectedUserIndex = lbCurSel _lbUsersControl;'
 		"
