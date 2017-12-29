@@ -5,7 +5,7 @@ tk_minimalMode = false;
 dayz_antihack = 0; //0: allow teleport on your client. 1: enable vanilla anticheat on your client.
 
 #include "ui\colors.hpp"
-if (!isNil "tk_scriptList") exitWith {systemChat "ERROR: TestKit reinitialized";};
+if (!isNil "tk_scriptList") exitWith {diag_log "ERROR: TestKit reinitialized"};
 
 tk_scriptList = [
 	["",""],
@@ -111,12 +111,11 @@ if (tk_editorMode) then {
 	dayz_nutrition = 0;
 	dayz_temperatur = 0;
 	r_player_blood = 0;
-	dayz_rollingMessages = {};
 	epoch_generateKey = {[0,0]};
 	fnc_usec_damageHandler = {0};
 	player_humanityMorph = {};
 	player_zombieCheck = {};
-	PVDZ_pass = ["none","none"];
+	dayz_authKey = "";
 };
 
 [] spawn {
@@ -132,6 +131,7 @@ if (tk_editorMode) then {
 		call DZ_KeyDown_EH;
 	};
 	waitUntil {uiSleep 1;(!isNil "Dayz_loginCompleted" && !isNil "keyboard_keys")};
+	systemChat (localize "str_loading");
 	uiSleep 2;
 	
 	DZ_KeyDown_EH_Original = DZ_KeyDown_EH;
